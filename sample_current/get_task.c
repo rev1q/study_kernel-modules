@@ -23,16 +23,20 @@
 #include <linux/init.h>
 #include <linux/sched.h>
 
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("Sample module using current");
+MODULE_AUTHOR("Revi");
+
 static int __init macro_init(void)
 {
-  pr_info("current : pid=%d , comm=%s\n", current->pid, current->comm);
+	pr_info("current : pid=%d , comm=%s\n", current->pid, current->comm);
 
-  return 0;
+	return 0;
 }
 
 static void __exit macro_exit(void)
 {
-  pr_info("finish output\n");
+	pr_info("finish output\n");
 }
 
 module_init(macro_init);
