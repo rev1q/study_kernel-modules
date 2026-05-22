@@ -21,7 +21,7 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
-#include <linux/sched.h>
+#include <linux/sched.h>	/* currentマクロ */
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Sample module using current");
@@ -29,7 +29,11 @@ MODULE_AUTHOR("Revi");
 
 static int __init macro_init(void)
 {
-	pr_info("current : pid=%d , comm=%s\n", current->pid, current->comm);
+	pr_info("current : pid=%d ,comm=%s ,mm=%px ,state=%c\n",
+			current->pid,		/* プロセスID */
+			current->comm,		/* プロセス（スレッド）名 */
+			current->mm,		/* プロセス仮想アドレス空間のポインタ */
+			current->__state);	/* プロセスの状態 */
 
 	return 0;
 }
