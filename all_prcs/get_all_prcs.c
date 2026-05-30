@@ -45,7 +45,6 @@ static inline void get_task_list(void)
 
 static int __init list_init(void)
 {
-
 	pr_info("Install Module\n");
 	get_task_list();
 	return 0;
